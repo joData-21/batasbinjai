@@ -1,0 +1,346 @@
+<!doctype html> 
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 100%;
+            height: 720px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Batas_Permendagri_2.js"></script>
+        <script src="data/Batas_RTRW_Lama_3.js"></script>
+        <script src="data/BedaSP_4.js"></script>
+        <script src="data/Sungai_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[3.5294057925129736,98.43449184839825],[3.5676010817063073,98.50966501580757]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatelite_0');
+        map.getPane('pane_GoogleSatelite_0').style.zIndex = 400;
+        var layer_GoogleSatelite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatelite_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_GoogleSatelite_0;
+        map.addLayer(layer_GoogleSatelite_0);
+        map.createPane('pane_GoogleRoads_1');
+        map.getPane('pane_GoogleRoads_1').style.zIndex = 401;
+        var layer_GoogleRoads_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z} ', {
+            pane: 'pane_GoogleRoads_1',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_GoogleRoads_1;
+        map.addLayer(layer_GoogleRoads_1);
+        function pop_Batas_Permendagri_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUMBER'] !== null ? autolinker.link(feature.properties['SUMBER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Batas_Permendagri_2_0() {
+            return {
+                pane: 'pane_Batas_Permendagri_2',
+                opacity: 1,
+                color: 'rgba(20,20,239,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Batas_Permendagri_2');
+        map.getPane('pane_Batas_Permendagri_2').style.zIndex = 402;
+        map.getPane('pane_Batas_Permendagri_2').style['mix-blend-mode'] = 'normal';
+        var layer_Batas_Permendagri_2 = new L.geoJson(json_Batas_Permendagri_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Batas_Permendagri_2',
+            layerName: 'layer_Batas_Permendagri_2',
+            pane: 'pane_Batas_Permendagri_2',
+            onEachFeature: pop_Batas_Permendagri_2,
+            style: style_Batas_Permendagri_2_0,
+        });
+        bounds_group.addLayer(layer_Batas_Permendagri_2);
+        map.addLayer(layer_Batas_Permendagri_2);
+        function pop_Batas_RTRW_Lama_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Id'] !== null ? autolinker.link(feature.properties['Id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Batas_RTRW_Lama_3_0() {
+            return {
+                pane: 'pane_Batas_RTRW_Lama_3',
+                opacity: 1,
+                color: 'rgba(235,8,8,1.0)',
+                dashArray: '10,5',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Batas_RTRW_Lama_3');
+        map.getPane('pane_Batas_RTRW_Lama_3').style.zIndex = 403;
+        map.getPane('pane_Batas_RTRW_Lama_3').style['mix-blend-mode'] = 'normal';
+        var layer_Batas_RTRW_Lama_3 = new L.geoJson(json_Batas_RTRW_Lama_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Batas_RTRW_Lama_3',
+            layerName: 'layer_Batas_RTRW_Lama_3',
+            pane: 'pane_Batas_RTRW_Lama_3',
+            onEachFeature: pop_Batas_RTRW_Lama_3,
+            style: style_Batas_RTRW_Lama_3_0,
+        });
+        bounds_group.addLayer(layer_Batas_RTRW_Lama_3);
+        map.addLayer(layer_Batas_RTRW_Lama_3);
+        function pop_BedaSP_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['KECAMATAN'] !== null ? autolinker.link(feature.properties['KECAMATAN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['BEDA'] !== null ? autolinker.link(feature.properties['BEDA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LUAS'] !== null ? autolinker.link(feature.properties['LUAS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NO_SEGMEN'] !== null ? autolinker.link(feature.properties['NO_SEGMEN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        var pattern_BedaSP_4_0 = new L.StripePattern({
+            weight: 0.7,
+            spaceWeight: 6.0,
+            color: '#f61509',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 315
+        });
+        pattern_BedaSP_4_0.addTo(map);
+        var pattern_BedaSP_4_0 = new L.StripePattern({
+            weight: 0.7,
+            spaceWeight: 5.2,
+            color: '#09f247',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 225
+        });
+        pattern_BedaSP_4_0.addTo(map);
+        var pattern_BedaSP_4_0 = new L.StripePattern({
+            weight: 0.7,
+            spaceWeight: 6.0,
+            color: '#f61509',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 315
+        });
+        pattern_BedaSP_4_0.addTo(map);
+        var pattern_BedaSP_4_0 = new L.StripePattern({
+            weight: 0.7,
+            spaceWeight: 5.2,
+            color: '#09f247',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 225
+        });
+        pattern_BedaSP_4_0.addTo(map);
+        function style_BedaSP_4_0(feature) {
+            switch(String(feature.properties['BEDA'])) {
+                case 'BERKURANG':
+                    return {
+                pane: 'pane_BedaSP_4',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_BedaSP_4_0,
+                interactive: true,
+            }
+                    break;
+                case 'BERTAMBAH':
+                    return {
+                pane: 'pane_BedaSP_4',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_BedaSP_4_0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        function style_BedaSP_4_1(feature) {
+            switch(String(feature.properties['BEDA'])) {
+                case 'BERKURANG':
+                    return {
+                pane: 'pane_BedaSP_4',
+                stroke: false,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'BERTAMBAH':
+                    return {
+                pane: 'pane_BedaSP_4',
+                stroke: false,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_BedaSP_4');
+        map.getPane('pane_BedaSP_4').style.zIndex = 404;
+        map.getPane('pane_BedaSP_4').style['mix-blend-mode'] = 'normal';
+        var layer_BedaSP_4 = new L.geoJson.multiStyle(json_BedaSP_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_BedaSP_4',
+            layerName: 'layer_BedaSP_4',
+            pane: 'pane_BedaSP_4',
+            onEachFeature: pop_BedaSP_4,
+            styles: [style_BedaSP_4_0,style_BedaSP_4_1,]
+        });
+        bounds_group.addLayer(layer_BedaSP_4);
+        map.addLayer(layer_BedaSP_4);
+        function pop_Sungai_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FCODE'] !== null ? autolinker.link(feature.properties['FCODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LCODE'] !== null ? autolinker.link(feature.properties['LCODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FTYPE'] !== null ? autolinker.link(feature.properties['FTYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMOBJ'] !== null ? autolinker.link(feature.properties['NAMOBJ'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REMARK'] !== null ? autolinker.link(feature.properties['REMARK'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SRS_ID'] !== null ? autolinker.link(feature.properties['SRS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['METADATA'] !== null ? autolinker.link(feature.properties['METADATA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UPDATED'] !== null ? autolinker.link(feature.properties['UPDATED'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PELAKSANA'] !== null ? autolinker.link(feature.properties['PELAKSANA'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Sungai_5_0() {
+            return {
+                pane: 'pane_Sungai_5',
+                opacity: 1,
+                color: 'rgba(17,237,156,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Sungai_5');
+        map.getPane('pane_Sungai_5').style.zIndex = 405;
+        map.getPane('pane_Sungai_5').style['mix-blend-mode'] = 'normal';
+        var layer_Sungai_5 = new L.geoJson(json_Sungai_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Sungai_5',
+            layerName: 'layer_Sungai_5',
+            pane: 'pane_Sungai_5',
+            onEachFeature: pop_Sungai_5,
+            style: style_Sungai_5_0,
+        });
+        bounds_group.addLayer(layer_Sungai_5);
+        map.addLayer(layer_Sungai_5);
+        setBounds();
+        var i = 0;
+        layer_BedaSP_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NO_SEGMEN'] !== null?String('<div style="color: #edf4f2; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NO_SEGMEN']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_BedaSP_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_BedaSP_4]);
+        map.on("zoomend", function(){
+            resetLabels([layer_BedaSP_4]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_BedaSP_4]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_BedaSP_4]);
+        });
+        </script>
+    </body>
+</html>
